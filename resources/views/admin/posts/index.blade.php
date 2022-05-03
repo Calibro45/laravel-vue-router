@@ -27,7 +27,7 @@
                         <td>{{ $post->updated_at }}</td>
                         <td>
                             <button class="btn btn-secondary">
-                                <a href="">Modifica</a>
+                                <a href="{{ route('admin.posts.edit', $post) }}" class="text-light">Modifica</a>
                             </button>
                         </td>
                     </tr>

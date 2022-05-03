@@ -55,6 +55,17 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+                                    {{-- link personali --}}
+                                    <a href="{{ route('admin.posts.index') }}" class="dropdown-item">
+                                        Home Posts
+                                    </a>
+
+                                    <a href="{{ route('admin.posts.create') }}" class="dropdown-item">
+                                        Crea nuovo post
+                                    </a>
+                                    {{-- end link personali --}}
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
