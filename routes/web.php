@@ -25,9 +25,12 @@ Route::middleware('auth')
     ->name('admin.')
     ->prefix('admin')
     ->group(function () {
-        Route::get('/home', 'HomeController@index')->name('home');
 
-        //* rotte posts
+    Route::get('/home', 'HomeController@index')->name('home');
+
+    //* rotte posts
         
-        Route::resource('posts', 'PostController');
-    });
+    Route::resource('posts', 'PostController')->except([
+        'show'
+    ]);
+});
