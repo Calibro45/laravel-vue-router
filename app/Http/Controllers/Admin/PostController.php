@@ -59,22 +59,7 @@ class PostController extends Controller
 
         $data = $request->all();
 
-        // creazione slug 
-
-        $slug = Str::slug($data['title']);
-        $slugBase = $slug;
-        $counter = 1;
-        
-        $post_present = Post::where('slug', $slug)->first();
-
-        // controllo slug esiste
-
-        while ($post_present) {
-
-            $slug = $slugBase . '-' . $counter;
-            $counter++;
-            $post_present = Post::where('slug', $slug)->first();
-        };
+        $slug = Post::getUniqueSlug($data['title']);
 
         $post = new Post();
         $post->fill($data);
