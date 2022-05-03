@@ -19,7 +19,7 @@ class PostController extends Controller
         //todo recupera i dati
 
         $posts = Post::limit(50)
-            ->orderBy('published_at', 'desc')
+            ->orderBy('created_at', 'desc')
             ->get();
 
         // ritorna la vista posts.index
