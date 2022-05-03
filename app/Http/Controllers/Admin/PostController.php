@@ -44,10 +44,12 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        // todo validation
+        // validation
 
         $request->validate([
-            'title' => 'required|string',
+            'title' => 'required|string|max:150',
+            'content' => 'required|string',
+            'published_at' => 'nullable|date|before_or_equal:today'
         ]);
 
         // rechiesta
