@@ -14,13 +14,19 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //todo recupera i dati
+        $filtro = ($request->input('filter'));
 
-        $posts = Post::limit(50)
-            ->orderBy('created_at', 'desc')
-            ->get();
+        if(isset($filtro)) {
+            $posts = Post::orderBy($filtro, 'asc')
+                ->get();
+        } else {
+            // data
+    
+            $posts = Post::orderBy('created_at', 'desc')
+                ->get();
+        }
 
         // ritorna la vista posts.index
 

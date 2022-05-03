@@ -3,6 +3,22 @@
 @section('content')
 
     <div class="container">
+        <form action="{{ route('admin.posts.index') }}" method="POST" class="mb-3">
+            @csrf
+            @method('GET')
+            <label for="filter">Ordina Crescente</label>
+            <select name="filter" class="custom-select w-auto">
+                <option value="">Ripristina</option>
+                <option value="id">id</option>
+                <option value="title">Titolo</option>
+                <option value="created_at">Data Creazione</option>
+                <option value="published_at">Data Pubblicazione</option>
+            </select>
+
+            <button type="submit" class="btn btn-primary">
+                Filtra
+            </button>
+        </form>
 
         <table class="table table-hover">
             <thead class="thead-dark text-center">
