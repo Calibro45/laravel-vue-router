@@ -31,7 +31,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        // ritorna la vista del form
+
+        return view('admin.posts.create');
     }
 
     /**
@@ -42,7 +44,15 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // todo validation
+
+        $request->validate([
+            'title' => 'required|string',
+        ]);
+
+        // rechiesta
+
+        dump($request->all());
     }
 
     /**
