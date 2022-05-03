@@ -14,6 +14,7 @@
                 <th scope="col">Data creazione</th>
                 <th scope="col">Data Modifica</th>
                 <th scope="col">Modifica</th>
+                <th scope="col">Elimina</th>
               </tr>
             </thead>
             <tbody>
@@ -29,6 +30,16 @@
                             <button class="btn btn-secondary">
                                 <a href="{{ route('admin.posts.edit', $post) }}" class="text-light">Modifica</a>
                             </button>
+                        </td>
+                        <td>
+                            <form action="{{ route('admin.posts.destroy', $post) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger"
+                                onclick="return confirm('Vuoi eliminare il Post ?')">
+                                    Elimina
+                                </button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach

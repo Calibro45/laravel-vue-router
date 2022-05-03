@@ -50,7 +50,18 @@
                 @enderror
             </div>
 
-            <button type="submit" class="btn btn-success">Salva</button>
+            <div class="d-flex align-items-center justify-content-between">
+                <button type="submit" class="btn btn-success">Salva</button>
+    
+                <form action="{{ route('admin.posts.destroy', $post) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger"
+                    onclick="return confirm('Vuoi eliminare il Post ?')">
+                        Elimina
+                    </button>
+                </form>
+            </div>
 
         </form>
     </div>
