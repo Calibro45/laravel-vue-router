@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Post;
 use Illuminate\Http\Request;
+use illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -17,7 +18,9 @@ class PostController extends Controller
     {
         //todo recupera i dati
 
-        $posts = Post::limit(50)->get();
+        $posts = Post::limit(50)
+            ->orderBy('published_at', 'desc')
+            ->get();
 
         // ritorna la vista posts.index
 
@@ -54,7 +57,34 @@ class PostController extends Controller
 
         // rechiesta
 
-        dump($request->all());
+        $data = $request->all();
+
+        // creazione slug 
+
+        $slug = Str::slug($data['title']);
+        $slugBase = $slug;
+        $counter = 1;
+        
+        $post_present = Post::where('slug', $slug)->first();
+
+        // controllo slug esiste
+
+        while ($post_present) {
+
+            $slug = $slugBase . '-' . $counter;
+            $counter++;
+            $post_present = Post::where('slug', $slug)->first();
+        };
+
+        $post = new Post();
+        $post->fill($data);
+        $post->slug = $slug;
+
+        $post->save();
+
+        return redirect()->route('admin.posts.index');
+
+        //dump($data, $slug);
     }
 
     /**

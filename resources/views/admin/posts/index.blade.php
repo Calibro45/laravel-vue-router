@@ -7,6 +7,7 @@
             
             <li>
                 {{ $post->title }}
+                {{ $post->slug }}
             </li>
 
         @endforeach
