@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
 use App\Http\Controllers\Controller;
 use App\Post;
 use Illuminate\Http\Request;
@@ -40,9 +41,12 @@ class PostController extends Controller
      */
     public function create()
     {
-        // ritorna la vista del form
+        // categories data
+        $categories = Category::orderBy('name', 'asc')
+            ->get();
 
-        return view('admin.posts.create');
+        // ritorna la vista del form
+        return view('admin.posts.create', compact('categories'));
     }
 
     /**

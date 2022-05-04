@@ -24,6 +24,16 @@
             </div>
 
             <div class="form-group">
+                <label for="categories">Categoria</label>
+                <select class="form-control" id="categories" name="category_id">
+                  <option value="">-- seleziona categoria --</option>
+                  @foreach ($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                  @endforeach
+                </select>
+              </div>
+
+            <div class="form-group">
                 <label for="content">Articolo</label>
                 <textarea class="form-control @error('content') is-invalid @enderror" 
                 id="content" rows="5" name="content">{{ old('content') }}</textarea>
