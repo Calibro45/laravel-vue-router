@@ -14,6 +14,12 @@ class Post extends Model
         'slug'
     ];
 
+    public function category() {
+
+        // one to many inverse
+        return $this->belongsTo('App\Category');
+    }
+
     public static function getUniqueSlug($title) {
 
         // creazione slug 

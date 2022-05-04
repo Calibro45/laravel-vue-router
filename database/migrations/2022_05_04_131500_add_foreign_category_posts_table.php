@@ -38,10 +38,9 @@ class AddForeignCategoryPostsTable extends Migration
 
             // remove foreign key
             $table->dropForeign(['category_id']);
-            
+
             // remove column
             $table->dropColumn('category_id');
-
         });
     }
 }
