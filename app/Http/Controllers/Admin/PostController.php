@@ -20,12 +20,12 @@ class PostController extends Controller
         $filtro = ($request->input('filter'));
 
         if(isset($filtro)) {
-            $posts = Post::orderBy($filtro, 'asc')
+            $posts = Post::with('category')->orderBy($filtro, 'asc')
                 ->get();
         } else {
             // data
     
-            $posts = Post::orderBy('created_at', 'desc')
+            $posts = Post::with('category')->orderBy('created_at', 'desc')
                 ->get();
         }
 
@@ -62,7 +62,8 @@ class PostController extends Controller
         $request->validate([
             'title' => 'required|string|max:150',
             'content' => 'required|string',
-            'published_at' => 'nullable|date|before_or_equal:today'
+            'published_at' => 'nullable|date|before_or_equal:today',
+            'category_id' => 'nullable|exists:categories,id|numeric'
         ]);
 
         // rechiesta
