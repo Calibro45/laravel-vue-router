@@ -8,7 +8,7 @@
 
     <div class="container">
         
-        <form action="{{ route('admin.posts.update', $post) }}" method="POST">
+        <form action="{{ route('admin.posts.update', $post) }}" method="POST" id="edit">
             @csrf
             @method('PUT')
 
@@ -50,15 +50,15 @@
                 @enderror
             </div>
 
-            <div class="d-flex align-items-center justify-content-between">
-
-                <button type="submit" class="btn btn-success">Salva</button>
-    
-                @include('admin.posts.partials.deleteForm')
-                
-            </div>
-
         </form>
+        
+        <div class="d-flex align-items-center justify-content-between">
+    
+            <button type="submit" form="edit" class="btn btn-success">Salva</button>
+    
+            @include('admin.posts.partials.deleteForm')
+            
+        </div>
     </div>
     
 @endsection
