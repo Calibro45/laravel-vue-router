@@ -20,15 +20,19 @@ class PostController extends Controller
         $filtro = ($request->input('filter'));
 
         if(isset($filtro)) {
-            $posts = Post::with('category')->orderBy($filtro, 'asc')
+            $posts = Post::with('category')
+                ->orderBy($filtro, 'asc')
+                ->limit(50)
                 ->get();
         } else {
             // data
     
-            $posts = Post::with('category')->orderBy('created_at', 'desc')
+            $posts = Post::with('category')
+                ->orderBy('created_at', 'desc')
+                ->limit(50)
                 ->get();
-        }
-
+            }
+        //dd($posts);
         // ritorna la vista posts.index
 
         return view('admin.posts.index', compact('posts'));
@@ -91,7 +95,11 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('admin.posts.edit', compact('post'));
+        // categories data
+        $categories = Category::orderBy('name', 'asc')
+            ->get();
+
+        return view('admin.posts.edit', compact('post', 'categories'));
     }
 
     /**
@@ -108,7 +116,8 @@ class PostController extends Controller
         $request->validate([
             'title' => 'required|string|max:150',
             'content' => 'required|string',
-            'published_at' => 'nullable|date|before_or_equal:today'
+            'published_at' => 'nullable|date|before_or_equal:today',
+            'category_id' => 'nullable|exists:categories,id|numeric'
         ]);
         
         // request

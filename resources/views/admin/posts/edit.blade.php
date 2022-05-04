@@ -15,7 +15,7 @@
             <div class="form-group">
                 <label for="title">Titolo</label>
                 <input type="text" name="title"  id="title" placeholder="Titolo" 
-                value="{{ old('title') ?: $post->title }}"
+                value="{{ old('title', $post->title) }}"
                 class="form-control @error('title') is-invalid @enderror">
 
                 {{-- errors --}}
@@ -26,9 +26,29 @@
             </div>
 
             <div class="form-group">
+                <label for="categories">Categoria</label>
+                <select id="categories" name="category_id" 
+                class="form-control @error('category_id') is-invalid @enderror">
+                  <option value="">-- seleziona categoria --</option>
+                  @foreach ($categories as $category)
+                    <option {{ old('category_id', optional($post->category)->id)== $category->id ? 'selected' : '' }} 
+                    value="{{ $category->id }}">
+                        {{ $category->name }}
+                    </option>
+                  @endforeach
+                </select>
+
+                {{-- errors --}}
+
+                @error('category_id')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="form-group">
                 <label for="content">Articolo</label>
                 <textarea class="form-control @error('content') is-invalid @enderror" 
-                id="content" rows="5" name="content">{{ old('content') ?: $post->content }}</textarea>
+                id="content" rows="5" name="content">{{ old('content', $post->content) }}</textarea>
 
                 {{-- errors --}}
 
@@ -40,7 +60,7 @@
             <div class="form-group">
                 <label for="published_at">Data Pubblicazione</label>
                 <input type="date" name="published_at"  id="published_at" 
-                value="{{ old('published_at') ?: Str::substr($post->published_at, 0, 10) }}"
+                value="{{ old('published_at', Str::substr($post->published_at, 0, 10) ) }}"
                 class="form-control @error('published_at') is-invalid @enderror">
 
                 {{-- errors --}}
