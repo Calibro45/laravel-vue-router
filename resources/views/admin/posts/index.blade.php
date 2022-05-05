@@ -9,10 +9,9 @@
             <label for="filter">Ordina Crescente</label>
             <select name="filter" class="custom-select w-auto">
                 <option value="">Ripristina</option>
-                <option value="id">id</option>
-                <option value="title">Titolo</option>
-                <option value="created_at">Data Creazione</option>
-                <option value="published_at">Data Pubblicazione</option>
+                @foreach ($columnNames as $name)
+                    <option value="{{$name}}">{{$name}}</option>
+                @endforeach
             </select>
 
             <button type="submit" class="btn btn-primary">

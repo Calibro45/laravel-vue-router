@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Schema;
 use illuminate\Support\Str;
 
 class Post extends Model
@@ -63,5 +65,13 @@ class Post extends Model
 
             $this->tags()->sync([]);
         };
+    }
+
+    public static function getColumnNames() {
+
+        $columnNamesAll = Schema::getColumnListing('posts');
+        $columnNames = Arr::except($columnNamesAll, ['4', '5']);
+
+        return $columnNames;
     }
 }

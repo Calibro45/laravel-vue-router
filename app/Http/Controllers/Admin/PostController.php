@@ -36,7 +36,10 @@ class PostController extends Controller
         //dd($posts);
         // ritorna la vista posts.index
 
-        return view('admin.posts.index', compact('posts'));
+        $columnNames = Post::getColumnNames();
+        //dd($columnNames);
+
+        return view('admin.posts.index', compact('posts', 'columnNames'));
     }
 
     /**
