@@ -44,14 +44,18 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Post $post)
     {
         // categories data
         $categories = Category::orderBy('name', 'asc')
             ->get();
 
+        //tags data
+        $tags = Tag::orderBy('name', 'asc')
+        ->get();
+
         // ritorna la vista del form
-        return view('admin.posts.create', compact('categories'));
+        return view('admin.posts.create', compact('post', 'categories', 'tags'));
     }
 
     /**
@@ -68,7 +72,8 @@ class PostController extends Controller
             'title' => 'required|string|max:150',
             'content' => 'required|string',
             'published_at' => 'nullable|date|before_or_equal:today',
-            'category_id' => 'nullable|exists:categories,id|numeric'
+            'category_id' => 'nullable|exists:categories,id|numeric',
+            'tags' => 'exists:tags,id'
         ]);
 
         // rechiesta
@@ -80,8 +85,9 @@ class PostController extends Controller
         $post = new Post();
         $post->fill($data);
         $post->slug = $slug;
-
         $post->save();
+        
+        $post->checkTagKey('tags', $data);
 
         return redirect()->route('admin.posts.index');
 

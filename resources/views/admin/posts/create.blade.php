@@ -11,6 +11,8 @@
         <form action="{{ route('admin.posts.store') }}" method="POST">
             @csrf
 
+            {{-- post title --}}
+
             <div class="form-group">
                 <label for="title">Titolo</label>
                 <input type="text" name="title"  id="title" placeholder="Titolo" value="{{ old('title') }}"
@@ -22,6 +24,8 @@
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
+
+            {{-- post category --}}
 
             <div class="form-group">
                 <label for="categories">Categoria</label>
@@ -41,7 +45,35 @@
                 @error('category_id')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
-              </div>
+            </div>
+
+            {{-- post tags --}}
+
+            <div>
+                <label for="chekbox-tag">Tags</label>
+            </div>
+            <div class="d-flex mb-3">
+                @foreach ($tags as $tag)
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="tags[]" value="{{ $tag->id }}"
+                        class="custom-control-input" id="tags-{{ $tag->id }}"
+                        {{$post->tags->contains($tag) ? 'checked' : ''}}>
+                        <label class="custom-control-label pr-3" for="tags-{{ $tag->id }}">
+                            {{ $tag->name }}
+                        </label>
+                    </div>
+                @endforeach
+            </div>
+            
+            {{-- errors --}}
+
+            @error('tags')
+                <div class="text-danger">
+                    {{ $message }}
+                </div>
+            @enderror
+
+            {{-- post content --}}
 
             <div class="form-group">
                 <label for="content">Articolo</label>
@@ -55,6 +87,8 @@
                 @enderror
             </div>
 
+            {{-- post published date --}}
+
             <div class="form-group">
                 <label for="published_at">Data Pubblicazione</label>
                 <input type="date" name="published_at"  id="published_at" value="{{ old('published_at') }}"
@@ -66,6 +100,8 @@
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
+
+            {{-- post button --}}
 
             <button type="submit" class="btn btn-primary">Crea</button>
 

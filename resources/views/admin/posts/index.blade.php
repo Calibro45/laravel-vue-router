@@ -44,7 +44,9 @@
                         <td>{{ $post->category ? $post->category->name : '--' }}</td>
                         <td>
                             @foreach ($post->tags as $tag)
-                                <span class="badge badge-pill badge-info">{{ $tag->name }}</span> 
+                                <span class="badge badge-pill badge-info text-light">
+                                    {{ $tag->name }}
+                                </span> 
                             @endforeach
                         </td>
                         <td>{{ $post->published_at }}</td>
