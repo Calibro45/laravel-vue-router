@@ -2,6 +2,7 @@
 
 use App\Category;
 use App\Post;
+use App\Tag;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
@@ -17,8 +18,15 @@ class PostSeeder extends Seeder
     {
 
         // recovery collection category & the value all key
+
         $categories = Category::all();
         $catId = $categories->pluck('id')
+            ->all();
+
+        // recovery collection tag and value
+
+        $tags = Tag::all();
+        $tagId = $tags->pluck('id')
             ->all();
 
         // ciclo per popolare migration
@@ -33,7 +41,11 @@ class PostSeeder extends Seeder
             $post->published_at = $faker->optional()->dateTime();
             $post->category_id = $faker->optional()->randomElement($catId);
 
+            $randomTags = $faker->randomElements($tagId, 2);
+
             $post->save();
+
+            $post->tags()->attach($randomTags);
         }   
     }
 }
