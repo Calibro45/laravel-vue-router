@@ -20,14 +20,14 @@ class PostController extends Controller
         $filtro = ($request->input('filter'));
 
         if(isset($filtro)) {
-            $posts = Post::with('category')
+            $posts = Post::with(['category', 'tags'])
                 ->orderBy($filtro, 'asc')
                 ->limit(50)
                 ->get();
         } else {
             // data
     
-            $posts = Post::with('category')
+            $posts = Post::with(['category', 'tags'])
                 ->orderBy('created_at', 'desc')
                 ->limit(50)
                 ->get();
