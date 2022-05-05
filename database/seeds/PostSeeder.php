@@ -1,5 +1,6 @@
 <?php
 
+use App\Category;
 use App\Post;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
@@ -14,7 +15,13 @@ class PostSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        //* ciclo per popolare migration
+
+        // recovery collection category & the value all key
+        $categories = Category::all();
+        $catId = $categories->pluck('id')
+            ->all();
+
+        // ciclo per popolare migration
 
         for ($i=0; $i < 100 ; $i++) { 
             
@@ -23,7 +30,8 @@ class PostSeeder extends Seeder
             $post->title = $faker->words(8, true);
             $post->slug = Str::slug($post->title);
             $post->content = $faker->paragraphs(8, true);
-            $post->published_at = $faker->optional(0.5)->dateTime();
+            $post->published_at = $faker->optional()->dateTime();
+            $post->category_id = $faker->optional()->randomElement($catId);
 
             $post->save();
         }   
