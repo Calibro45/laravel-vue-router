@@ -52,4 +52,16 @@ class Post extends Model
 
         return $slug;
     }
+
+    public function checkTagKey($key, $array) {
+
+        if(array_key_exists($key, $array)) {
+
+            $this->tags()->sync($array[$key]);
+
+        } else {
+
+            $this->tags()->sync([]);
+        };
+    }
 }

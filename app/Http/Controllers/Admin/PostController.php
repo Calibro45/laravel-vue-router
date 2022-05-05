@@ -138,14 +138,7 @@ class PostController extends Controller
 
         // if tags keys exist sync tag to post
 
-        if(array_key_exists('tags', $data)) {
-
-            $post->tags()->sync($data['tags']);
-
-        } else {
-
-            $post->tags()->sync([]);
-        }
+        $post->checkTagKey('tags', $data);
 
         //dd($data);
         
