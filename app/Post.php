@@ -15,10 +15,19 @@ class Post extends Model
         'category_id'
     ];
 
+    //* one to many inverse relation with category *//
+
     public function category() {
 
         // one to many inverse
         return $this->belongsTo('App\Category');
+    }
+
+    //* many to many relation with tags *//
+
+    public function tags() {
+        
+        return $this->belongsToMany('App\Tag');
     }
 
     public static function getUniqueSlug($title) {
