@@ -13,7 +13,7 @@ class Post extends Model
         'published_at',
         'slug',
         'category_id',
-        'tags'
+        'tag_id'
     ];
 
     //* one to many inverse relation with category *//

@@ -135,9 +135,20 @@ class PostController extends Controller
             $slug = Post::getUniqueSlug($data['title']);
             $data['slug'] = $slug;
         }
-        
-        //dd($data);
 
+        // if tags keys exist sync tag to post
+
+        if(array_key_exists('tags', $data)) {
+
+            $post->tags()->sync($data['tags']);
+
+        } else {
+
+            $post->tags()->sync([]);
+        }
+
+        //dd($data);
+        
         $post->update($data);
 
         return redirect()->route('admin.posts.index');
