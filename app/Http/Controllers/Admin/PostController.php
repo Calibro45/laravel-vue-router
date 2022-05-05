@@ -122,7 +122,8 @@ class PostController extends Controller
             'title' => 'required|string|max:150',
             'content' => 'required|string',
             'published_at' => 'nullable|date|before_or_equal:today',
-            'category_id' => 'nullable|exists:categories,id|numeric'
+            'category_id' => 'nullable|exists:categories,id|numeric',
+            'tags' => 'exists:tags,id'
         ]);
         
         // request

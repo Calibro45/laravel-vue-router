@@ -12,7 +12,8 @@ class Post extends Model
         'content',
         'published_at',
         'slug',
-        'category_id'
+        'category_id',
+        'tags'
     ];
 
     //* one to many inverse relation with category *//
