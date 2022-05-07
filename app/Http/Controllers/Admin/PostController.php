@@ -23,14 +23,14 @@ class PostController extends Controller
         if(isset($filtro)) {
             $posts = Post::with(['category', 'tags'])
                 ->orderBy($filtro, 'asc')
-                ->limit(50)
+                ->limit(20)
                 ->get();
         } else {
             // data
     
             $posts = Post::with(['category', 'tags'])
                 ->orderBy('created_at', 'desc')
-                ->limit(50)
+                ->limit(20)
                 ->get();
             }
         //dd($posts);
@@ -76,7 +76,7 @@ class PostController extends Controller
             'content' => 'required|string',
             'published_at' => 'nullable|date|before_or_equal:today',
             'category_id' => 'nullable|exists:categories,id|numeric',
-            'tags' => 'exists:tags,id'
+            'tags.*' => 'exists:tags,id'
         ]);
 
         // rechiesta
@@ -132,7 +132,7 @@ class PostController extends Controller
             'content' => 'required|string',
             'published_at' => 'nullable|date|before_or_equal:today',
             'category_id' => 'nullable|exists:categories,id|numeric',
-            'tags' => 'exists:tags,id'
+            'tags.*' => 'exists:tags,id'
         ]);
         
         // request

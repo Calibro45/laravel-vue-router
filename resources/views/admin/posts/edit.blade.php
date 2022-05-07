@@ -35,7 +35,7 @@
                 class="form-control @error('category_id') is-invalid @enderror">
                   <option value="">-- seleziona categoria --</option>
                   @foreach ($categories as $category)
-                    <option {{ old('category_id', optional($post->category)->id)== $category->id ? 'selected' : '' }} 
+                    <option {{ old('category_id', optional($post->category)->id) == $category->id ? 'selected' : '' }} 
                     value="{{ $category->id }}">
                         {{ $category->name }}
                     </option>
@@ -55,25 +55,24 @@
                 <label for="chekbox-tag">Tags</label>
             </div>
             <div class="d-flex mb-3">
-                @foreach ($tags as $tag)
+                @foreach ($tags as $index => $tag)
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" name="tags[]" value="{{ $tag->id }}"
-                        class="custom-control-input" id="tags-{{ $tag->id }}"
+                        <input type="checkbox" name="tags[{{$index}}]" value="{{ $tag->id }}" id="tags-{{ $tag->id }}"
+                        class="custom-control-input" 
                         {{$post->tags->contains($tag) ? 'checked' : ''}}>
                         <label class="custom-control-label pr-3" for="tags-{{ $tag->id }}">
                             {{ $tag->name }}
                         </label>
+
+                        @error('tags.{{$index}}')
+                            <div class="text-danger">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
+
                 @endforeach
             </div>
-
-            {{-- errors --}}
-
-            @error('tags')
-                <div class="text-danger">
-                    {{ $message }}
-                </div>
-            @enderror
             
             {{-- post content --}}
 

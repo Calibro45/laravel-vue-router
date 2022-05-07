@@ -53,25 +53,26 @@
                 <label for="chekbox-tag">Tags</label>
             </div>
             <div class="d-flex mb-3">
-                @foreach ($tags as $tag)
+                @foreach ($tags as $index => $tag)
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" name="tags[]" value="{{ $tag->id }}"
+                        <input type="checkbox" name="tags[{{$index}}]" value="{{ $tag->id }}"
                         class="custom-control-input" id="tags-{{ $tag->id }}"
-                        {{$post->tags->contains($tag) ? 'checked' : ''}}>
+                        {{(is_array(old('tags')) && in_array($tag->id, old('tags'))) ? 'checked' : ''}}>
                         <label class="custom-control-label pr-3" for="tags-{{ $tag->id }}">
                             {{ $tag->name }}
                         </label>
                     </div>
+
+                    {{-- errors --}}
+        
+                    @error('tags.{{$index}}')
+                        <div class="text-danger">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 @endforeach
             </div>
             
-            {{-- errors --}}
-
-            @error('tags')
-                <div class="text-danger">
-                    {{ $message }}
-                </div>
-            @enderror
 
             {{-- post content --}}
 
