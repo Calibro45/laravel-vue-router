@@ -48,9 +48,9 @@
                                 </span> 
                             @endforeach
                         </td>
-                        <td>{{ $post->published_at }}</td>
-                        <td>{{ $post->created_at }}</td>
-                        <td>{{ $post->updated_at }}</td>
+                        <td>{{ $post->getCustomDate($post->published_at) }}</td>
+                        <td>{{ $post->getCustomDate($post->created_at) }}</td>
+                        <td>{{ $post->getDiffFromDateForHumans($post->updated_at, $post->published_at) }}</td>
                         <td>
                             <button class="btn btn-secondary">
                                 <a href="{{ route('admin.posts.edit', $post) }}" class="text-light">Modifica</a>

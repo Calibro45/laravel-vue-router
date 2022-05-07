@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Schema;
@@ -73,5 +74,26 @@ class Post extends Model
         $columnNames = Arr::except($columnNamesAll, ['4', '5']);
 
         return $columnNames;
+    }
+
+    // set date format
+
+    public function getCustomDate($dat) {
+
+        if ($dat) {
+            $dt = Carbon::createFromFormat('Y-m-d H:i:s', $dat);
+            $formatDate = $dt->format('d/m/Y');
+
+            return $formatDate;
+        }
+    }
+
+    public function getDiffFromDateForHumans($dtStart, $dtEnd) {
+
+        $now = Carbon::createFromDate($dtStart);
+        $after = $now->locale('it_IT')
+            ->diffForHumans($dtEnd);
+
+        return $after;
     }
 }
