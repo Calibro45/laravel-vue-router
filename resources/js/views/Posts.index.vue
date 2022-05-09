@@ -1,11 +1,18 @@
 <template>
-    <div>
-        
+    <div class="post_wrap">
+
+        <PostCard v-for="post in posts" :key="post.id" :post="post"/>
+
     </div>
 </template>
 
 <script>
+import PostCard from '../components/PostsCard.vue';
+
 export default {
+    components : {
+        PostCard,
+    },
     data() {
         return {
             posts: [],
