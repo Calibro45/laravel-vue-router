@@ -1,17 +1,14 @@
 <template>
     <div>
         <header>
-            <nav>
-                <ol>
-                    <li>Home</li>
-                    <li>Post</li>
-                </ol>
-            </nav>
+            <div class="none:container text-center">
+                <h1>Boolpres</h1>
+            </div>
         </header>
 
         <main>
 
-        <PostsGrid />
+            <PostsGrid />
 
         </main>
 

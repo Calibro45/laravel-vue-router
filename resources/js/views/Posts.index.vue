@@ -1,8 +1,10 @@
 <template>
-    <div class="post_wrap">
+    <div class="container">
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
 
-        <PostCard v-for="post in posts" :key="post.id" :post="post"/>
+            <PostCard v-for="post in posts" :key="post.id" :post="post"/>
 
+        </div>
     </div>
 </template>
 
