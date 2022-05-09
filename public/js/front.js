@@ -2623,9 +2623,15 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("header", [
-      _c("div", { staticClass: "none:container text-center" }, [
-        _c("h1", [_vm._v("Boolpress")]),
-      ]),
+      _c(
+        "div",
+        { staticClass: "none:container text-center bg-cyan-100 py-3 mb-32" },
+        [
+          _c("h1", { staticClass: "text-6xl font-bold mb-10" }, [
+            _vm._v("Boolpress"),
+          ]),
+        ]
+      ),
     ])
   },
 ]
@@ -2674,7 +2680,7 @@ var render = function () {
               key: n,
               class: [
                 "select-none cursor-pointer w-8 h-8 flex items-center justify-center rounded-full",
-                n === _vm.currPage ? "bg-cyan-300" : "",
+                n === _vm.currPage ? "bg-cyan-200" : "",
               ],
               on: {
                 click: function ($event) {

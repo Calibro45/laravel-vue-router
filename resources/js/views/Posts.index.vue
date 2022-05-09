@@ -11,7 +11,7 @@
                 <li v-for="n in 5" :key="n"
                 @click="fetchPosts(n)"
                 :class="['select-none cursor-pointer w-8 h-8 flex items-center justify-center rounded-full', 
-                n === currPage ? 'bg-cyan-300' : '']">
+                n === currPage ? 'bg-cyan-200' : '']">
                     {{ n }}
                 </li>
             </ol>
