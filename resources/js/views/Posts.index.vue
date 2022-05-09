@@ -7,10 +7,11 @@
         </div>
 
         <div>
-            <ol class="flex align-center justify-center gap-3">
+            <ol class="flex items-center justify-center gap-3">
                 <li v-for="n in 5" :key="n"
                 @click="fetchPosts(n)"
-                class="select-none cursor-pointer">
+                :class="['select-none cursor-pointer w-8 h-8 flex items-center justify-center rounded-full', 
+                n === currPage ? 'bg-cyan-300' : '']">
                     {{ n }}
                 </li>
             </ol>

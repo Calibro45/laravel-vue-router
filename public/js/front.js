@@ -2014,6 +2014,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2573,7 +2574,7 @@ var staticRenderFns = [
       [
         _c("img", {
           staticClass: "object-cover",
-          attrs: { src: "https://picsum.photos/550/300" },
+          attrs: { src: "https://picsum.photos/650/300" },
         }),
       ]
     )
@@ -2665,13 +2666,16 @@ var render = function () {
     _c("div", [
       _c(
         "ol",
-        { staticClass: "flex align-center justify-center gap-3" },
+        { staticClass: "flex items-center justify-center gap-3" },
         _vm._l(5, function (n) {
           return _c(
             "li",
             {
               key: n,
-              staticClass: "select-none cursor-pointer",
+              class: [
+                "select-none cursor-pointer w-8 h-8 flex items-center justify-center rounded-full",
+                n === _vm.currPage ? "bg-cyan-300" : "",
+              ],
               on: {
                 click: function ($event) {
                   return _vm.fetchPosts(n)

@@ -2,7 +2,7 @@
 
     <div class="post_wrap p-1.5">
         <figure class="post-header rounded-lg overflow-hidden mb-3.5">
-            <img class="object-cover" src="https://picsum.photos/550/300">
+            <img class="object-cover" src="https://picsum.photos/650/300">
         </figure>
 
         <div class="post-body mb-3.5">
