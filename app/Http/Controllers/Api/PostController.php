@@ -16,9 +16,8 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::with(['category', 'tags'])
-            ->limit(12)
             ->where('published_at', '!=', 'null')
-            ->get();
+            ->paginate(12);
 
         return response()
             ->json([

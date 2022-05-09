@@ -2,7 +2,7 @@
     <div>
         <header>
             <div class="none:container text-center">
-                <h1>Boolpres</h1>
+                <h1>Boolpress</h1>
             </div>
         </header>
 

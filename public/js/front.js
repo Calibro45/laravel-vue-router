@@ -2004,6 +2004,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2011,16 +2021,28 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      posts: []
+      posts: [],
+      currPage: 1,
+      lastPage: 0
     };
   },
   methods: {
     fetchPosts: function fetchPosts() {
       var _this = this;
 
-      axios.get('/api/posts').then(function (res) {
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      axios.get('/api/posts', {
+        params: {
+          page: page
+        }
+      }).then(function (res) {
         var posts = res.data.posts;
-        _this.posts = posts;
+        var data = posts.data,
+            current_page = posts.current_page,
+            last_page = posts.last_page;
+        _this.posts = data;
+        _this.currPage = current_page;
+        _this.lastPage = last_page;
       })["catch"](function (err) {
         console.warn(err);
       });
@@ -2601,7 +2623,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("header", [
       _c("div", { staticClass: "none:container text-center" }, [
-        _c("h1", [_vm._v("Boolpres")]),
+        _c("h1", [_vm._v("Boolpress")]),
       ]),
     ])
   },
@@ -2631,13 +2653,37 @@ var render = function () {
     _c(
       "div",
       {
-        staticClass: "grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4",
+        staticClass:
+          "grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-10",
       },
       _vm._l(_vm.posts, function (post) {
         return _c("PostCard", { key: post.id, attrs: { post: post } })
       }),
       1
     ),
+    _vm._v(" "),
+    _c("div", [
+      _c(
+        "ol",
+        { staticClass: "flex align-center justify-center gap-3" },
+        _vm._l(5, function (n) {
+          return _c(
+            "li",
+            {
+              key: n,
+              staticClass: "select-none cursor-pointer",
+              on: {
+                click: function ($event) {
+                  return _vm.fetchPosts(n)
+                },
+              },
+            },
+            [_vm._v("\n                " + _vm._s(n) + "\n            ")]
+          )
+        }),
+        0
+      ),
+    ]),
   ])
 }
 var staticRenderFns = []
