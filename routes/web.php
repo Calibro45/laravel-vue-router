@@ -34,3 +34,7 @@ Route::middleware('auth')
         'show'
     ]);
 });
+
+Route::fallback(function() {
+    return view('guest.home');
+});
