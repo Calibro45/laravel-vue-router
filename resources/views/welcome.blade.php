@@ -80,7 +80,7 @@
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
-                    <a href="{{ url('/guest/home') }}">Guest</a>
+                    {{-- <a href="{{ url('/guest/home') }}">Guest</a> --}}
                     @auth
                         <a href="{{ url('/admin/home') }}">Home</a>
                     @else
