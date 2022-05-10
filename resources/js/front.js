@@ -17,8 +17,10 @@
  */
 
 import App from './views/App.vue';
+import router from './router/index';
 
 const app = new Vue({
     el: '#root',
-    render: h => h(App)
+    render: h => h(App),
+    router
 });
