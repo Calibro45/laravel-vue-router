@@ -8,7 +8,7 @@
 
         <main>
 
-            <PostsGrid />
+            <router-view></router-view>
 
         </main>
 
@@ -19,11 +19,8 @@
     </div>
 </template>
 <script>
-import PostsGrid from './Posts.index.vue';
 export default {
-    components: {
-        PostsGrid,
-    }
+
 }
 </script>
 <style lang="scss">
