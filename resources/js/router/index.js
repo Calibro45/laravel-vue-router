@@ -8,6 +8,7 @@ Vue.use(VueRouter);
 
 // import dei componenti
 import Posts from '../pages/Posts.index.vue';
+import Post from '../pages/Posts.show.vue';
 
 // costante dove andranno le rotte
 const routes = [
@@ -15,6 +16,11 @@ const routes = [
         path: '/posts',
         name: 'posts.index',
         component: Posts
+    },
+    {
+        path: '/posts/:slug',
+        name: 'posts.show',
+        component: Post
     }
 ];
 
