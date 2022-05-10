@@ -53,9 +53,34 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        // query per recupero post da fare la show
+        $post = Post::with(['category', 'tags'])
+            ->where('slug', $slug)
+            ->first();
+        //dd($post->published_at);
+
+        $publishDate = $post->published_at;
+        //dd($publishDate);
+
+        // controllo se post esiste
+        if($post && $publishDate) {
+            // return dati in json
+            return response()
+                ->json([
+                    'posts' => $post,
+                    'succes' => true
+                ]);
+        }
+
+        // ritorno post non trovato
+        return response()
+            ->json([
+                'message' => 'post non trovato o non pubblicato',
+                'succes' => false
+            ], 404);
+        
     }
 
     /**

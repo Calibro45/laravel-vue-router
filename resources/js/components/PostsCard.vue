@@ -19,7 +19,7 @@
         </div>
 
         <div class="post-footer">
-            <button>Read full article</button>
+            <button>Per saperne di più</button>
         </div>
     </div>
 

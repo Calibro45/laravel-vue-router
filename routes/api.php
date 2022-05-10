@@ -21,7 +21,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // rotta api per restituire i posts al frontoffice
 
 Route::namespace('Api')
-    ->name('api.posts')
+    ->name('api.')
     ->group(function() {
-        Route::get('/posts', 'PostController@index'); 
+        Route::resource('posts', 'PostController')
+            ->only(['index', 'show']); 
 });

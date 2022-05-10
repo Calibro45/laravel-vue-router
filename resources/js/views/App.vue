@@ -3,6 +3,11 @@
         <header>
             <div class="none:container text-center bg-cyan-100 py-3 mb-32">
                 <h1 class="text-6xl font-bold mb-10">Boolpress</h1>
+                <nav>
+                    <ol>
+                        <router-link :to="{name: 'posts.index'}">Home</router-link>
+                    </ol>
+                </nav>
             </div>
         </header>
 

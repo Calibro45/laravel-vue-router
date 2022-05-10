@@ -2065,6 +2065,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -2597,7 +2602,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "post-footer" }, [
-      _c("button", [_vm._v("Read full article")]),
+      _c("button", [_vm._v("Per saperne di più")]),
     ])
   },
 ]
@@ -2709,19 +2714,7 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm._m(0),
-    _vm._v(" "),
-    _c("main", [_c("router-view")], 1),
-    _vm._v(" "),
-    _c("footer", [_vm._v("\n        che bel footer\n    ")]),
-  ])
-}
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("header", [
+    _c("header", [
       _c(
         "div",
         { staticClass: "none:container text-center bg-cyan-100 py-3 mb-32" },
@@ -2729,11 +2722,28 @@ var staticRenderFns = [
           _c("h1", { staticClass: "text-6xl font-bold mb-10" }, [
             _vm._v("Boolpress"),
           ]),
+          _vm._v(" "),
+          _c("nav", [
+            _c(
+              "ol",
+              [
+                _c("router-link", { attrs: { to: { name: "posts.index" } } }, [
+                  _vm._v("Home"),
+                ]),
+              ],
+              1
+            ),
+          ]),
         ]
       ),
-    ])
-  },
-]
+    ]),
+    _vm._v(" "),
+    _c("main", [_c("router-view")], 1),
+    _vm._v(" "),
+    _c("footer", [_vm._v("\n        che bel footer\n    ")]),
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
