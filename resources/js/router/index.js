@@ -9,6 +9,7 @@ Vue.use(VueRouter);
 // import dei componenti
 import Posts from '../pages/Posts.index.vue';
 import Post from '../pages/Posts.show.vue';
+import Error from '../pages/Posts.error.vue';
 
 // costante dove andranno le rotte
 const routes = [
@@ -21,6 +22,11 @@ const routes = [
         path: '/posts/:slug',
         name: 'posts.show',
         component: Post
+    },
+    {
+        path: '/*',
+        name: 'error',
+        component: Error
     }
 ];
 

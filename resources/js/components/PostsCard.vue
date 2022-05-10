@@ -19,7 +19,9 @@
         </div>
 
         <div class="post-footer">
-            <button>Per saperne di più</button>
+            <router-link tag="button" :to="{name: 'posts.show', params: {slug: post.slug}}">
+                Per saperne di più
+            </router-link>
         </div>
     </div>
 
