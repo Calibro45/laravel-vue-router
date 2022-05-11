@@ -1,5 +1,5 @@
 <template>
-    <div class="container py-28 flex flex-col items-center">
+    <div class="container py-28 flex flex-col items-center justify-center h-screen">
         <figure class="w-80 mb-3">
             <img src="https://cdn.pixabay.com/photo/2020/06/24/01/07/darth-vader-5334273_960_720.png">
         </figure>
