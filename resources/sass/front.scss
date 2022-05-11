@@ -18,3 +18,13 @@ a {
     color: currentColor;
     text-decoration: none;
 }
+
+header > div {
+    border-bottom-left-radius: 50% 20px;
+    border-bottom-right-radius: 50% 20px;
+}
+
+footer {
+    border-top-left-radius: 50% 20px;
+    border-top-right-radius: 50% 20px;
+}

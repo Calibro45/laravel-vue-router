@@ -5,7 +5,7 @@
             <img class="object-cover h-full" src="https://picsum.photos/650/300">
         </figure>
 
-        <div class="post-body mb-3.5 text-zinc-600 font-bold text-center">
+        <div class="post-body mb-4 text-zinc-600 font-bold text-center">
             <div class="mb-3 bg-cyan-50 flex items-center flex-wrap gap-2 py-2 px-4 shadow-lg">
                 <h5 v-if="post.category" class="uppercase text-sm tracking-widest flex-auto">
                     {{ post.category.name }}

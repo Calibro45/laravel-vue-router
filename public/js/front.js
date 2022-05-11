@@ -2009,6 +2009,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2079,6 +2080,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   beforeMount: function beforeMount() {
     //console.log(this.slug)
@@ -2119,6 +2130,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -2650,7 +2663,7 @@ var render = function () {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "post-body mb-3.5 text-zinc-600 font-bold text-center" },
+      { staticClass: "post-body mb-4 text-zinc-600 font-bold text-center" },
       [
         _c(
           "div",
@@ -2823,12 +2836,17 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
+  return _c("div", { staticClass: "container relative" }, [
+    _c("span", {
+      staticClass:
+        "block absolute inset-y-0 inset-x-2 h-1 bg-zinc-300 rounded-sm",
+    }),
+    _vm._v(" "),
     _c(
       "div",
       {
         staticClass:
-          "grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-6 mb-10",
+          "grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-6 mb-10 pt-10",
       },
       _vm._l(_vm.posts, function (post) {
         return _c("PostCard", { key: post.id, attrs: { post: post } })
@@ -2888,11 +2906,65 @@ var render = function () {
   return _vm.loading
     ? _c("section", [
         _c("div", { staticClass: "container" }, [
+          _c(
+            "div",
+            { staticClass: "mb-6 flex items-center gap-3 font-medium" },
+            [
+              _vm.post.category
+                ? _c(
+                    "h5",
+                    {
+                      staticClass:
+                        "uppercase text-sm tracking-widest flex-auto",
+                    },
+                    [
+                      _vm._v(
+                        "\n                Categoria: " +
+                          _vm._s(_vm.post.category.name) +
+                          "\n            "
+                      ),
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _vm._l(_vm.post.tags, function (tag) {
+                return _c(
+                  "span",
+                  {
+                    key: tag.slug,
+                    staticClass:
+                      "text-xs py-1 px-2 rounded-full whitespace-nowra bg-gradient-to-r from-emerald-300 to-cyan-200",
+                  },
+                  [
+                    _vm._v(
+                      "\n                " + _vm._s(tag.name) + "\n            "
+                    ),
+                  ]
+                )
+              }),
+            ],
+            2
+          ),
+          _vm._v(" "),
           _vm._m(0),
           _vm._v(" "),
-          _c("div", [_c("h1", [_vm._v(_vm._s(_vm.post.title))])]),
+          _c(
+            "div",
+            { staticClass: "text-zinc-600 mb-8 bg-cyan-50 shadow-lg" },
+            [
+              _c(
+                "h1",
+                { staticClass: "font-bold uppercase text-xl py-2 px-4" },
+                [_vm._v(_vm._s(_vm.post.title))]
+              ),
+            ]
+          ),
           _vm._v(" "),
-          _c("div", [_c("p", [_vm._v(_vm._s(_vm.post.content))])]),
+          _c("div", { staticClass: "text-zinc-500 font-medium" }, [
+            _c("p", { staticClass: "text-md leading-6 tracking-wide" }, [
+              _vm._v(_vm._s(_vm.post.content)),
+            ]),
+          ]),
         ]),
       ])
     : _vm._e()
@@ -2902,9 +2974,16 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("figure", [
-      _c("img", { attrs: { src: "https://picsum.photos/1080/720", alt: "" } }),
-    ])
+    return _c(
+      "figure",
+      { staticClass: "rounded-lg overflow-hidden mb-6 h-80" },
+      [
+        _c("img", {
+          staticClass: "object-cover object-center h-full w-full",
+          attrs: { src: "https://picsum.photos/1080/720" },
+        }),
+      ]
+    )
   },
 ]
 render._withStripped = true
@@ -2938,9 +3017,9 @@ var render = function () {
             "h1",
             {
               staticClass:
-                "text-7xl font-bold mb-10 text-black/80 tracking-widest",
+                "text-7xl font-bold mb-10 text-black/80 tracking-widest uppercase",
             },
-            [_vm._v("Boolpress")]
+            [_vm._v("\n                Boolpress\n            ")]
           ),
           _vm._v(" "),
           _c("nav", [

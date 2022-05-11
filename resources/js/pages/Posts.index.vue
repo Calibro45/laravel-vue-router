@@ -1,6 +1,7 @@
 <template>
-    <div class="container">
-        <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-6 mb-10">
+    <div class="container relative">
+        <span class="block absolute inset-y-0 inset-x-2 h-1 bg-zinc-300 rounded-sm"></span>
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-6 mb-10 pt-10">
 
             <PostCard v-for="post in posts" :key="post.id" :post="post"/>
 
