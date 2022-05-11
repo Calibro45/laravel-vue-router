@@ -1937,6 +1937,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     post: {
@@ -2114,6 +2119,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
 //
 //
 //
@@ -2640,31 +2648,74 @@ var render = function () {
   return _c("div", { staticClass: "post_wrap p-1.5" }, [
     _vm._m(0),
     _vm._v(" "),
-    _c("div", { staticClass: "post-body mb-3.5" }, [
-      _c("div", { staticClass: "mb-3" }, [
-        _vm.post.category
-          ? _c("h5", [_vm._v(_vm._s(_vm.post.category.name))])
-          : _c("h5", [_vm._v("Nessuna Categoria")]),
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        _vm._l(_vm.post.tags, function (tag) {
-          return _c("span", { key: tag.id }, [_vm._v(_vm._s(tag.name))])
-        }),
-        0
-      ),
-      _vm._v(" "),
-      _c("div", [_c("h4", [_vm._v(_vm._s(_vm.post.title))])]),
-    ]),
+    _c(
+      "div",
+      { staticClass: "post-body mb-3.5 text-zinc-600 font-bold text-center" },
+      [
+        _c(
+          "div",
+          {
+            staticClass:
+              "mb-3 bg-cyan-50 flex items-center flex-wrap gap-2 py-2 px-4 shadow-lg",
+          },
+          [
+            _vm.post.category
+              ? _c(
+                  "h5",
+                  {
+                    staticClass: "uppercase text-sm tracking-widest flex-auto",
+                  },
+                  [
+                    _vm._v(
+                      "\n                " +
+                        _vm._s(_vm.post.category.name) +
+                        "\n            "
+                    ),
+                  ]
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "flex gap-1" },
+              _vm._l(_vm.post.tags, function (tag) {
+                return _c(
+                  "span",
+                  {
+                    key: tag.id,
+                    staticClass:
+                      "text-xs py-1 px-2 rounded-full whitespace-nowra bg-gradient-to-r from-emerald-300 to-cyan-200",
+                  },
+                  [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(tag.name) +
+                        "\n                "
+                    ),
+                  ]
+                )
+              }),
+              0
+            ),
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", [
+          _c("h4", { staticClass: "capitalize text-left" }, [
+            _vm._v(_vm._s(_vm.post.title)),
+          ]),
+        ]),
+      ]
+    ),
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "post-footer" },
+      { staticClass: "post-footer text-sm text-zinc-600" },
       [
         _c(
           "router-link",
           {
+            staticClass: "rounded bg-green-400 py-2 px-4 font-medium",
             attrs: {
               tag: "button",
               to: { name: "posts.show", params: { slug: _vm.post.slug } },
@@ -2684,10 +2735,10 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "figure",
-      { staticClass: "post-header rounded-lg overflow-hidden mb-3.5" },
+      { staticClass: "post-header rounded-lg overflow-hidden mb-3.5 h-48" },
       [
         _c("img", {
-          staticClass: "object-cover",
+          staticClass: "object-cover h-full",
           attrs: { src: "https://picsum.photos/650/300" },
         }),
       ]
@@ -2777,7 +2828,7 @@ var render = function () {
       "div",
       {
         staticClass:
-          "grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-10",
+          "grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-6 mb-10",
       },
       _vm._l(_vm.posts, function (post) {
         return _c("PostCard", { key: post.id, attrs: { post: post } })
@@ -2883,17 +2934,32 @@ var render = function () {
         "div",
         { staticClass: "none:container text-center bg-cyan-100 py-3" },
         [
-          _c("h1", { staticClass: "text-6xl font-bold mb-10" }, [
-            _vm._v("Boolpress"),
-          ]),
+          _c(
+            "h1",
+            {
+              staticClass:
+                "text-7xl font-bold mb-10 text-black/80 tracking-widest",
+            },
+            [_vm._v("Boolpress")]
+          ),
           _vm._v(" "),
           _c("nav", [
             _c(
               "ol",
+              { staticClass: "text-zinc-600 font-bold" },
               [
-                _c("router-link", { attrs: { to: { name: "posts.index" } } }, [
-                  _vm._v("Home"),
-                ]),
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "hover:bg-green-400 hover:rounded py-1 px-3",
+                    attrs: { to: { name: "posts.index" } },
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Home\n                    "
+                    ),
+                  ]
+                ),
               ],
               1
             ),

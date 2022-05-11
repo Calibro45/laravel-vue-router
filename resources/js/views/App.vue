@@ -2,10 +2,13 @@
     <div>
         <header>
             <div class="none:container text-center bg-cyan-100 py-3">
-                <h1 class="text-6xl font-bold mb-10">Boolpress</h1>
+                <h1 class="text-7xl font-bold mb-10 text-black/80 tracking-widest">Boolpress</h1>
                 <nav>
-                    <ol>
-                        <router-link :to="{name: 'posts.index'}">Home</router-link>
+                    <ol class="text-zinc-600 font-bold">
+                        <router-link :to="{name: 'posts.index'}"
+                        class="hover:bg-green-400 hover:rounded py-1 px-3">
+                            Home
+                        </router-link>
                     </ol>
                 </nav>
             </div>

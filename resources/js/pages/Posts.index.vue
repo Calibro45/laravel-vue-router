@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-10">
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-6 mb-10">
 
             <PostCard v-for="post in posts" :key="post.id" :post="post"/>
 
